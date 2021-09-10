@@ -67,7 +67,7 @@ def product(row, column):
 # main program
 while True:
     try:
-        print("1. Add matrices\n2. Multiply matrix by a constant\n3. Multiply matrices\n4. Subtract matrices\n5. Calculate a determinant\n6. Inverse matrix\n0. Exit")
+        print("1. Add matrices\n2. Multiply matrices\n4. Subtract matrices\n0. Exit")
         choice = input("Your choice: ")
         if choice == "1":  # add two matrices
             a_row, a_column = input("Enter size of first matrix: ").split()
