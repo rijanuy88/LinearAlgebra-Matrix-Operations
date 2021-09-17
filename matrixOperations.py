@@ -2,9 +2,9 @@ class Matrix:
     class InsertionError(Exception):
         pass
 
-    def __init__(self, n, m):
-        self.rows = n
-        self.columns = m
+    def __init__(self, a, b):
+        self.rows = a
+        self.columns = b
         # it will be a list of rows where each row is a list of cells (int/float)
         self.matrix = []
 
@@ -14,8 +14,8 @@ class Matrix:
         result = Matrix(self.rows, self.columns)
         for row1, row2 in zip(self.matrix, matrixB.matrix):
             row = []
-            for cell1, cell2 in zip(row1, row2):
-                row.append(cell1 - cell2)
+            for index1, index2 in zip(row1, row2):
+                row.append(index1 - index2)
             result.matrix.append(row)
         return result
 
@@ -25,8 +25,8 @@ class Matrix:
         result = Matrix(self.rows, self.columns)
         for row1, row2 in zip(self.matrix, matrixB.matrix):
             row = []
-            for cell1, cell2 in zip(row1, row2):
-                row.append(cell1 + cell2)
+            for index1, index2 in zip(row1, row2):
+                row.append(index1 + index2)
             result.matrix.append(row)
         return result
 
@@ -54,14 +54,14 @@ class Matrix:
             result.matrix.append(row)
         return result
 
-    def column(self, index):
+    def column(self, i):
         """returns the column at the specified index [0, len["""
-        return [x[index] for x in self.matrix]
+        return [x[i] for x in self.matrix]
 
 
-def product(row, column):
+def product(row, col):
     """returns the result of the dot product of two equally length lists (a row and a column)"""
-    return sum([row[index] * column[index] for index in range(len(row))])
+    return sum([row[index] * col[index] for index in range(len(row))])
 
 
 # main program
