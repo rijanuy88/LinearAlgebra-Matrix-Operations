@@ -59,7 +59,7 @@ def product(row, col):
 # main program
 while True:
     try:
-        print("1. Add matrices\n2. Multiply matrices\n4. Subtract matrices\n0. Exit")
+        print("1. Add matrices\n2. Multiply matrices\n3. Subtract matrices\n0. Exit")
         choice = input("Your choice: ")
         if choice == "1":  # add two matrices
             a_row, a_column = input("Enter size of first matrix: ").split()
@@ -83,7 +83,7 @@ while True:
             B.read()
             print("The result is:")
             print(A * B)
-        elif choice == "4":  # subtract two matrices
+        elif choice == "3":  # subtract two matrices
             a_row, a_column = input("Enter size of first matrix: ").split()
             A = Matrix(int(a_row), int(a_column))
             print("Enter first matrix:")
