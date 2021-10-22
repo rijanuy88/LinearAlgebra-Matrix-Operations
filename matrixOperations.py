@@ -5,12 +5,10 @@ class Matrix:
     def __init__(self, a, b):
         self.rows = a
         self.columns = b
-        # it will be a list of rows where each row is a list of cells (int/float)
         self.matrix = []
 
     def __subtract__(self, matrixB):
-        """returns self matrix - other matrix"""
-        assert self.rows == matrixB.rows and self.columns == matrixB.columns  # check if correct dimensions
+        assert self.rows == matrixB.rows and self.columns == matrixB.columns
         result = Matrix(self.rows, self.columns)
         for row1, row2 in zip(self.matrix, matrixB.matrix):
             row = []
@@ -20,8 +18,7 @@ class Matrix:
         return result
 
     def __add__(self, matrixB):
-        """returns self matrix + other matrix"""
-        assert self.rows == matrixB.rows and self.columns == matrixB.columns  # check if correct dimensions
+        assert self.rows == matrixB.rows and self.columns == matrixB.columns
         result = Matrix(self.rows, self.columns)
         for row1, row2 in zip(self.matrix, matrixB.matrix):
             row = []
@@ -31,21 +28,18 @@ class Matrix:
         return result
 
     def __str__(self):
-        """returns a string representation of the matrix to be printed out"""
         return "\n".join([" ".join([str(round(x, 3)) for x in row]) for row in self.matrix])
 
     def read(self):
-        """reads and fills a matrix from the input"""
         for _ in range(self.rows):
             row = [float(x) if "." in x else int(x)
-                   for x in input().split()]  # read a full row
+                   for x in input().split()]
             if len(row) != self.columns:
-                raise self.InsertionError  # incorrect input
+                raise self.InsertionError
             self.matrix.append(row)
 
     def __mul__(self, other):
-        """returns matrix * matrix"""
-        assert self.columns == other.rows  # check if correct dimensions
+        assert self.columns == other.rows
         result = Matrix(self.rows, other.columns)
         for i in range(self.rows):
             row = []
@@ -55,12 +49,10 @@ class Matrix:
         return result
 
     def column(self, i):
-        """returns the column at the specified index [0, len["""
         return [x[i] for x in self.matrix]
 
 
 def product(row, col):
-    """returns the result of the dot product of two equally length lists (a row and a column)"""
     return sum([row[index] * col[index] for index in range(len(row))])
 
 
