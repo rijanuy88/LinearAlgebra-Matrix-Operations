@@ -2,11 +2,13 @@ class Matrix:
     class InsertionError(Exception):
         pass
 
+    # contructor matrix
     def __init__(self, a, b):
         self.rows = a
         self.columns = b
         self.matrix = []
 
+    # function to subtract matrices
     def __subtract__(self, matrixB):
         assert self.rows == matrixB.rows and self.columns == matrixB.columns
         result = Matrix(self.rows, self.columns)
@@ -17,6 +19,7 @@ class Matrix:
             result.matrix.append(row)
         return result
 
+    # function to add matrices a+b
     def __add__(self, matrixB):
         assert self.rows == matrixB.rows and self.columns == matrixB.columns
         result = Matrix(self.rows, self.columns)
@@ -33,11 +36,12 @@ class Matrix:
     def read(self):
         for _ in range(self.rows):
             row = [float(x) if "." in x else int(x)
-                   for x in input().split()]
+                for x in input().split()]
             if len(row) != self.columns:
                 raise self.InsertionError
             self.matrix.append(row)
 
+    # function to multiply matrices
     def __mul__(self, other):
         assert self.columns == other.rows
         result = Matrix(self.rows, other.columns)
